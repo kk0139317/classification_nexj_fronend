@@ -39,12 +39,13 @@ const LivePrediction = () => {
                 formData.append('url', window.location.href);
 
                 // Post image to server for prediction
-                const response = await axios.post('http://192.168.1.25:8000/api/livepredict/', formData, {
+                const response = await axios.post('https://192.168.1.25:8000/api/livepredict/', formData, {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
+                      'Content-Type': 'multipart/form-data',
+                    //   'Access-Control-Allow-Origin': 'https://192.168.1.244:3000', // Ensure CORS allows your frontend URL
                     },
-                });
-
+                  });
+                  
                 console.log('Server response:', response.data);
                 setPrediction(response.data);
                 setShowPopup(true);

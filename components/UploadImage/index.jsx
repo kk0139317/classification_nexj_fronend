@@ -27,22 +27,44 @@ const UploadImage = () => {
         img.src = imageUrl;
     };
 
+    // const handleSubmit = async () => {
+    //     if (!file) {
+    //         setError('Please select an image.');
+    //         return;
+    //     }
+
+    //     const formData = new FormData();
+    //     formData.append('file', file);
+    //     formData.append('url', window.location.href); // Send the URL of the page
+
+    //     try {
+    //         const response = await axios.post('https://192.168.1.25:8000/api/upload/', formData, {
+    //             headers: {
+    //                 'Content-Type': 'multipart/form-data',
+    //                 'Access-Control-Allow-Origin': 'https://192.168.1.244:3000', 
+    //             },
+    //         });
+    //         setPrediction(response.data);
+    //         setShowPopup(true);
+    //         setError(null);
+    //     } catch (error) {
+    //         console.error('Error uploading image:', error);
+    //         setError('Error uploading image. Please try again.');
+    //     }
+    // };
+
     const handleSubmit = async () => {
         if (!file) {
             setError('Please select an image.');
             return;
         }
-
+    
         const formData = new FormData();
         formData.append('file', file);
         formData.append('url', window.location.href); // Send the URL of the page
-
+    
         try {
-            const response = await axios.post('http://192.168.1.25:8000/api/upload/', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+            const response = await axios.post('https://192.168.1.25:8000/api/upload/', formData);
             setPrediction(response.data);
             setShowPopup(true);
             setError(null);
@@ -51,6 +73,7 @@ const UploadImage = () => {
             setError('Error uploading image. Please try again.');
         }
     };
+    
 
     return (
         <div className="flex items-center justify-center ">
