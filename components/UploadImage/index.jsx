@@ -64,7 +64,7 @@ const UploadImage = () => {
         formData.append('url', window.location.href); // Send the URL of the page
     
         try {
-            const response = await axios.post('https://192.168.1.25:8000/api/upload/', formData);
+            const response = await axios.post('https://192.168.1.244:8000/api/upload/', formData);
             setPrediction(response.data);
             setShowPopup(true);
             setError(null);
